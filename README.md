@@ -60,21 +60,51 @@ The dataset contains tweets with sentiment labels.
 
 ### Clone Repository
 ```bash
-git clone https://github.com/your-username/twitter-sentiment-analysis.git
+git clone https://github.com/Sornapriyadas/twitter-sentiment-analysis.git
 cd twitter-sentiment-analysis
+```
 
-Train Model
+### Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### Train Model
+```bash
 python main.py
-Run Streamlit App
+```
+
+### Run Streamlit App
+```bash
 streamlit run app.py
-📈 Model Building
+```
+
+## 📈 Model Building
 
 The project uses:
 
-TF-IDF Vectorizer
-Logistic Regression
+- TF-IDF Vectorizer
+- Logistic Regression
+
 Evaluation Metric:
-Accuracy Score
+
+- Accuracy Score
+
+## 📤 CSV Batch Prediction
+
+The Streamlit app can analyze a CSV file of saved tweets. Upload a CSV with one
+of these text columns:
+
+- `text`
+- `tweet`
+- `tweet_text`
+- `full_text`
+- `content`
+- `body`
+
+The app adds a `predicted_sentiment` column and lets you download the annotated
+CSV.
+
 📉 Results
 Achieved approximately 79% model accuracy
 Successfully predicts tweet sentiments in real-time
@@ -95,7 +125,7 @@ This project is licensed under the MIT License.
 
 Your Name
 
-GitHub: https://github.com/your-username
+GitHub: https://github.com/Sornapriyadas
 
 ⭐ Acknowledgements
 Kaggle Twitter Sentiment Dataset
