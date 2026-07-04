@@ -33,6 +33,8 @@ Twitter-Sentiment-Analysis/
 ├── training.1600000.processed.noemoticon.csv
 ├── main.py
 ├── app.py
+├── xquik_export.py
+├── test_xquik_export.py
 ├── sentiment_model.pkl
 ├── vectorizer.pkl
 ├── requirements.txt
@@ -60,13 +62,27 @@ The dataset contains tweets with sentiment labels.
 
 ### Clone Repository
 ```bash
-git clone https://github.com/your-username/twitter-sentiment-analysis.git
+git clone https://github.com/Sornapriyadas/twitter-sentiment-analysis.git
 cd twitter-sentiment-analysis
+```
 
-Train Model
+### Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### Train Model
+```bash
 python main.py
-Run Streamlit App
+```
+
+### Run Streamlit App
+```bash
 streamlit run app.py
+```
+
+### Analyze an Exported Xquik File
+Upload a CSV, JSON, or JSONL export in the Streamlit app. Supported text columns include `tweet`, `text`, `full_text`, `tweet_text`, `content`, and `body`.
 📈 Model Building
 
 The project uses:
@@ -95,7 +111,7 @@ This project is licensed under the MIT License.
 
 Your Name
 
-GitHub: https://github.com/your-username
+GitHub: https://github.com/Sornapriyadas
 
 ⭐ Acknowledgements
 Kaggle Twitter Sentiment Dataset

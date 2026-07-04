@@ -1,6 +1,8 @@
 import streamlit as st
 import joblib
 import re
+import pandas as pd
+from xquik_export import load_xquik_rows
 
 # Page settings
 st.set_page_config(
@@ -85,6 +87,30 @@ if st.button("Predict Sentiment"):
     else:
 
         st.error("😠 Negative Sentiment")
+
+st.markdown("---")
+uploaded = st.file_uploader("Upload a CSV, JSON, or JSONL Xquik export", type=["csv", "json", "jsonl"])
+if uploaded:
+    rows = load_xquik_rows(uploaded.getvalue())
+    if not rows:
+        st.warning("Upload does not contain a supported tweet text column.")
+    else:
+        predictions = []
+        for row in rows:
+            cleaned_tweet = clean_text(row["tweet"])
+            tweet_vector = vectorizer.transform([cleaned_tweet])
+            prediction = model.predict(tweet_vector)[0]
+            predictions.append("Positive" if prediction == 1 else "Negative")
+
+        result_df = pd.DataFrame(rows)
+        result_df["sentiment"] = predictions
+        st.dataframe(result_df, use_container_width=True)
+        st.download_button(
+            "Download batch results",
+            result_df.to_csv(index=False),
+            file_name="xquik_sentiment_results.csv",
+            mime="text/csv",
+        )
 
 # Footer
 st.markdown("---")
